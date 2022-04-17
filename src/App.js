@@ -30,32 +30,30 @@ class App extends Component {
     const { isLoading, movies } = this.state;
 
     return (
-      <Router basename="./movie_app_2022">
-        <body>
-          <section className="container">
-            {isLoading ? (
-              <div>
-                <span className="loader">Loading...</span>
-              </div>
-            ) : (
-              <div className="movies">
-                {movies.map((data) => {
-                  return (
-                    <Movie
-                      key={data.id}
-                      id={data.id}
-                      title={data.title}
-                      year={data.year}
-                      summary={data.summary}
-                      medium_cover_image={data.medium_cover_image}
-                    />
-                  );
-                })}
-              </div>
-            )}
-          </section>
-        </body>
-      </Router>
+      <body>
+        <section className="container">
+          {isLoading ? (
+            <div>
+              <span className="loader">Loading...</span>
+            </div>
+          ) : (
+            <div className="movies">
+              {movies.map((data) => {
+                return (
+                  <Movie
+                    key={data.id}
+                    id={data.id}
+                    title={data.title}
+                    year={data.year}
+                    summary={data.summary}
+                    medium_cover_image={data.medium_cover_image}
+                  />
+                );
+              })}
+            </div>
+          )}
+        </section>
+      </body>
     );
   }
 }

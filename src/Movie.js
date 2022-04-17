@@ -1,20 +1,26 @@
 import React, { Component } from "react";
 import ProTypes from "prop-types";
+import styles from "./Movie.css";
 
 class Movie extends Component {
   render() {
     const { id, title, year, genres, summary, medium_cover_image } = this.props;
 
     return (
-      <div>
-        <img src={medium_cover_image} alt={title} title={title} />
+      <div className="movie">
+        <img
+          className="img"
+          src={medium_cover_image}
+          alt={title}
+          title={title}
+        />
         <div>
-          <h3>{title}</h3>
-          <h5>{year}</h5>
-          <ul>
+          <h3 className="movie__title">{title}</h3>
+          <h5 className="movie__year">{year}</h5>
+          <ul className="movie__genres">
             {genres && genres.map((data, index) => <li key={index}>{data}</li>)}
           </ul>
-          <p>{summary.slice(0, 150)} ...</p>
+          <p>{summary.slice(0, 100)} ...</p>
         </div>
       </div>
     );

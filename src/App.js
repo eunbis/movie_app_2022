@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import Router from "react-dom";
 import axios from "axios";
 import Movie from "./Movie";
+import styles from "./App.css";
 
 class App extends Component {
   state = {
@@ -21,9 +23,6 @@ class App extends Component {
   };
 
   componentDidMount() {
-    // setTimeout(()=>{
-    //   this.setState({isLoading: false});
-    // }, 6000);
     this.getMovieData();
   }
 
@@ -31,28 +30,32 @@ class App extends Component {
     const { isLoading, movies } = this.state;
 
     return (
-      <section>
-        {isLoading ? (
-          <div>
-            <span>Loading...</span>
-          </div>
-        ) : (
-          <div>
-            {movies.map((data) => {
-              return (
-                <Movie
-                  key={data.id}
-                  id={data.id}
-                  title={data.title}
-                  year={data.year}
-                  summary={data.summary}
-                  medium_cover_image={data.medium_cover_image}
-                />
-              );
-            })}
-          </div>
-        )}
-      </section>
+      // <Router basename="./movie_app_2022">
+      <body>
+        <section className="container">
+          {isLoading ? (
+            <div>
+              <span className="loader">Loading...</span>
+            </div>
+          ) : (
+            <div className="movies">
+              {movies.map((data) => {
+                return (
+                  <Movie
+                    key={data.id}
+                    id={data.id}
+                    title={data.title}
+                    year={data.year}
+                    summary={data.summary}
+                    medium_cover_image={data.medium_cover_image}
+                  />
+                );
+              })}
+            </div>
+          )}
+        </section>
+      </body>
+      //</Router>
     );
   }
 }
